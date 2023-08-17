@@ -34,10 +34,6 @@ const Footer = () => {
             <span>Music & Audio</span>
             <span>Programming & Tech</span>
             <span>Data</span>
-            <span>Business</span>
-            <span>Lifestyle</span>
-            <span>Photography</span>
-            <span>Sitemap</span>
         </FooterBox>
           <FooterBox>
             <h2>About</h2>

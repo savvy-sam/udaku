@@ -1,6 +1,7 @@
-import { Box, Stack } from '@mui/material'
+import { Box, Container, Grid, Stack } from '@mui/material'
 import React from 'react'
 import MainCard from '../components/MainCard'
+import SideCard from '../components/SideCard'
 
 const Home = () => {
   return (
@@ -9,26 +10,38 @@ const Home = () => {
     flexDirection: 'column',
     padding: '15px'
    }}>
-      <Box>
+      <Box sx={{marginBottom: 3}}>
           <MainCard />
       </Box>
       <Box sx={{
         display: 'flex',
         flexDirection: 'row',
-
+        gap: "30px",
       }}>
-        <Box flex={3}>
-          <Stack spacing={2}>
+        <Box flex={2}>
+          <h3>LATEST</h3>
+          < hr />
+          <Grid container spacing={2}>
+          <Grid item xs={6}>
             <MainCard />
+          </Grid>
+          <Grid item xs={6}>
             <MainCard />
+          </Grid>
+          <Grid item xs={6}>
             <MainCard />
-          </Stack>
+          </Grid>
+          <Grid item xs={6}>
+              <MainCard />
+          </Grid>
+          </Grid>
         </Box>
         <Box flex={1}>
+          <h4>POPULAR POSTS</h4>
           <Stack spacing={2}>
-            <MainCard />
-            <MainCard />
-            <MainCard />
+            <SideCard />
+            <SideCard />
+            <SideCard />
           </Stack>
         </Box>
       </Box>

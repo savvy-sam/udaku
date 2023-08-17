@@ -11,10 +11,7 @@ import ViewArticle from './pages/ViewArticle';
 import Health from './pages/Health';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
-import { createTheme } from '@mui/material';
-import { ThemeProvider } from '@mui/material';
-
-
+import { Box, createTheme } from '@mui/material';
 
 function App() {
 
@@ -28,13 +25,11 @@ function App() {
 
   const Layout = () => {
     return (
-      <div className="app">
-          <ThemeProvider theme={darkTheme}>
-                <Navbar setMode={setMode} mode={mode} />
-                <Outlet />
-                <Footer />
-          </ThemeProvider>
-      </div>
+      <Box bgcolor={"Background.default"} color={"text.primary"}>
+          <Navbar setMode={setMode} mode={mode} />
+          <Outlet />
+          <Footer />
+      </Box>
     );
   };
 

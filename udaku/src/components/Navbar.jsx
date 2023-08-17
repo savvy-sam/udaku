@@ -62,11 +62,10 @@ const Navbar = ({mode,setMode}) => {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingX: "5px",
+    paddingX: "15px",
     width: '100%'
    }}>
-      <Box sx={{
+      <Box  flex={4} sx={{
         display: {xs: 'block', sm: 'none'}
       }}>
       <IconButton
@@ -99,31 +98,31 @@ const Navbar = ({mode,setMode}) => {
                   onClick={handleCloseNavMenu}>
                   <Link to={item.path} style={{
                           textDecoration: 'none',
-                          fontFamily: '"Noto Sans JP", Macan, Helvetica, sans-serif',
-                          fontWeight: 500,
+                          fontFamily: 'Macan, "Noto Sans JP", Macan, Helvetica, sans-serif',
+                          fontWeight: 600,
                           fontSize: '17px',
-                          color: 'black',}}>
+                          color: '#687385',}}>
                             {item.title}
                   </Link>
                 </MenuItem>
             ))}
         </Menu>
       </Box>
-      <Box sx={{display: {xs: 'none', sm: 'flex'}, gap: `24px`, textDecoration: 'none', fontFamily: "Noto Sans JP, sans-serif"}}>
+      <Box flex={4} sx={{display: {xs: 'none', sm: 'flex'}, gap: `24px`, textDecoration: 'none', fontFamily: "Noto Sans JP, sans-serif"}}>
           {pages.map((item, index)=>(
               <Link style={{
                 textDecoration: 'none',
-                fontFamily: '"Noto Sans JP", Macan, Helvetica, sans-serif',
-                fontWeight: 500,
-                fontSize: '17px',
-                color: 'black',
+                fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`,
+                fontWeight: 600,
+                fontSize: '14px',
+                color: '#687385',
               }} key={index} to={item.path}>
                 {item.title}
               </Link>
             ))
           }
       </Box>
-      <Box sx={{
+      <Box flex={1} sx={{
         display: 'flex',
         flexDirection: 'row',
         gap: "5px",
