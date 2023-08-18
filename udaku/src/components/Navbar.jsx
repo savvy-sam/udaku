@@ -62,8 +62,14 @@ const Navbar = ({mode,setMode}) => {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingX: "15px",
-    width: '100%'
+    paddingX: "45px",
+    width: '100%',
+    position: 'sticky',
+    zIndex: 999,
+    top: 0,
+    backgroundColor: '#FAFAFA',
+    transition: '0.5s all ease',
+    height: '50px'
    }}>
       <Box  flex={4} sx={{
         display: {xs: 'block', sm: 'none'}
@@ -140,10 +146,7 @@ const Navbar = ({mode,setMode}) => {
             <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}/>
         </Box>
         <FacebookRoundedIcon/>
-        < CallRoundedIcon/>
-        < Battery4BarRoundedIcon/>
       </Box>
-     
    </Box>
   )
 }

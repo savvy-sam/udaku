@@ -17,6 +17,7 @@ export const theme = createTheme({
 
   typography: {
     fontFamily:[
+      'Noto Sans JP',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
@@ -27,7 +28,6 @@ export const theme = createTheme({
       '"Apple Color Emoji"',
       "Segoe UI Emoji",
       "Segoe UI Symbol",
-      "Noto Color Emoji"
     ]
   },
 

@@ -11,7 +11,7 @@ import ViewArticle from './pages/ViewArticle';
 import Health from './pages/Health';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
-import { Box, createTheme } from '@mui/material';
+import { Box, Container, createTheme } from '@mui/material';
 
 function App() {
 
