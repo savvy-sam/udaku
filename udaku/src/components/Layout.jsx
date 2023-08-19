@@ -1,10 +1,8 @@
 import { Box, Container, Stack } from '@mui/material'
 import React from 'react'
-import SideCard from '../components/SideCard2'
-import SideCard2 from '../components/SideCard2'
-import Popular from './Popular'
+import Popular from '../pages/Popular'
 
-const Celebrities = () => {
+const Layout = ({children}) => {
   return (
   <Container maxWidth={'lg'}
   sx={{
@@ -15,12 +13,9 @@ const Celebrities = () => {
   <Box sx={{
   }} flex={2.5}>
     <Stack direction={'column'} spacing={1}>
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
+     {
+        children
+     }
   </Stack>
   </Box>
   <Box flex={1}
@@ -37,4 +32,4 @@ const Celebrities = () => {
   )
 }
 
-export default Celebrities
+export default Layout

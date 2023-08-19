@@ -47,8 +47,8 @@ function App() {
           element: <Celebrities />,
         },
         {
-          path: "/contactus",
-          element: <ContactUs />,
+          path: "/gossip",
+          element: <Gossip />,
         },
         {
           path: "/economy",

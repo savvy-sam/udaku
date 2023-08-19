@@ -20,8 +20,8 @@ const pages = [
     title: "Celebrities",
   },
   {
-    path: "/contactus",
-    title: "Contact Us",
+    path: "/gossip",
+    title: "Gossip",
   },
   {
     path: "/economy",
@@ -133,18 +133,8 @@ const Navbar = ({mode,setMode}) => {
         flexDirection: 'row',
         gap: "5px",
         alignItems: "center",
-        justifyContent: "center",
       }}>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: "0.5px",
-          alignItems: "center",
-          justifyContent: 'center',
-        }}>
-            < ModeNightSharpIcon />
-            <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}/>
-        </Box>
+        <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}/>
         <FacebookRoundedIcon/>
       </Box>
    </Box>
