@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import CallRoundedIcon from '@mui/icons-material/CallRounded';
-import Battery4BarRoundedIcon from '@mui/icons-material/Battery4BarRounded';
 import { IconButton, Menu, MenuItem, Switch } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import ModeNightSharpIcon from '@mui/icons-material/ModeNightSharp';
-
+import Toggle from 'react-toggle'
+import "react-toggle/style.css" 
 
 
 const pages = [
@@ -62,7 +60,12 @@ const Navbar = ({mode,setMode}) => {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingX: "45px",
+    paddingX: {
+      xs: '10px',
+      sm: "20px",
+      md: '30px',
+      lg: '40px',
+    },
     width: '100%',
     position: 'sticky',
     zIndex: 999,
@@ -72,7 +75,8 @@ const Navbar = ({mode,setMode}) => {
     height: '50px'
    }}>
       <Box  flex={4} sx={{
-        display: {xs: 'block', sm: 'none'}
+        display: {xs: 'block', sm: 'none'},
+        width: '50%',
       }}>
       <IconButton
             size="large"
@@ -95,6 +99,9 @@ const Navbar = ({mode,setMode}) => {
              transformOrigin={{
                  vertical: 'top',
                  horizontal: 'left',
+             }}
+             sx={{
+              paddingX: '15px',
              }}
              open={Boolean(anchorElNav)}
              onClose={handleCloseNavMenu}
@@ -129,12 +136,18 @@ const Navbar = ({mode,setMode}) => {
           }
       </Box>
       <Box flex={1} sx={{
+        flexGrow: 1,
         display: 'flex',
         flexDirection: 'row',
-        gap: "5px",
+        justifyContent: 'center',
         alignItems: "center",
       }}>
-        <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}/>
+        <Toggle
+          checked={mode==="dark"}
+          onChange={e=>setMode(mode === "light" ? "dark" : "light")}
+          icons={{ checked: "🌙", unchecked: "🔆" }}
+          aria-label="Dark mode toggle"
+        />
         <FacebookRoundedIcon/>
       </Box>
    </Box>

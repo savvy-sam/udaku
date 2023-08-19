@@ -26,7 +26,12 @@ const Home = () => {
                 gap: '10px',
                 }}>
             <Container sx={{
-              paddingX: '30px',
+              paddingX: {
+                xs: '5px',
+                sm: '15',
+                md: '20px',
+                lg: '30px',
+              },
               backgroundColor: 'paper'
             }}>
               <Grid container spacing={2}>

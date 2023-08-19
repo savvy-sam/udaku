@@ -1,9 +1,11 @@
 import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
 import Image1 from '../assets/images/image_1.jpeg'
+import { Link } from 'react-router-dom'
 
 const SideCard3 = () => {
   return (
+    <Link to={'/post'} style={{textDecoration: 'none'}}>
     <Card variant='outlined' sx={{ maxWidth: '100%',
         border: 'none' }}>
     <CardActionArea >
@@ -37,6 +39,7 @@ const SideCard3 = () => {
       </CardContent>
     </CardActionArea>
   </Card>
+  </Link>
   )
 }
 

@@ -11,25 +11,24 @@ import ViewArticle from './pages/ViewArticle';
 import Health from './pages/Health';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
-import { Box, Container, createTheme } from '@mui/material';
+import { Box,  } from '@mui/material';
+import {theme} from "./theme.js"
+import { darkTheme } from './darkTheme';
+import { ThemeProvider } from '@mui/material'
 
 function App() {
 
-  const [mode, setMode] = useState("dark");
-
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode,
-    },
-  });
+  const [mode, setMode] = useState("light");
 
   const Layout = () => {
     return (
+      <ThemeProvider theme={mode==="dark" ? darkTheme: theme}>
       <Box bgcolor={"Background.default"} color={"text.primary"}>
           <Navbar setMode={setMode} mode={mode} />
           <Outlet />
           <Footer />
       </Box>
+      </ThemeProvider>
     );
   };
 
@@ -71,7 +70,7 @@ function App() {
           element: <Sports />,
         },
         {
-          path: "/post/:id",
+          path: "/post/",
           element: <ViewArticle />,
         },
       ],
