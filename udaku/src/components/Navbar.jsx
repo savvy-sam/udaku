@@ -121,7 +121,7 @@ const Navbar = ({mode,setMode}) => {
             ))}
         </Menu>
       </Box>
-      <Box flex={4} sx={{display: {xs: 'none', sm: 'flex'}, gap: `24px`, textDecoration: 'none', fontFamily: "Noto Sans JP, sans-serif"}}>
+      <Box flex={3.5} sx={{display: {xs: 'none', sm: 'flex'}, gap: `24px`, textDecoration: 'none', fontFamily: "Noto Sans JP, sans-serif"}}>
           {pages.map((item, index)=>(
               <Link style={{
                 textDecoration: 'none',
@@ -139,16 +139,26 @@ const Navbar = ({mode,setMode}) => {
         flexGrow: 1,
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: "center",
       }}>
+        <Box flex={1}>
         <Toggle
           checked={mode==="dark"}
           onChange={e=>setMode(mode === "light" ? "dark" : "light")}
           icons={{ checked: "🌙", unchecked: "🔆" }}
           aria-label="Dark mode toggle"
         />
+        </Box>
+        <Box flex={3} sx={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          flexDirection: 'row'
+        }}>
+        <FacebookRoundedIcon/> 
         <FacebookRoundedIcon/>
+        <FacebookRoundedIcon/>
+        </Box>
       </Box>
    </Box>
   )

@@ -3,9 +3,9 @@ import React from 'react'
 import Image1 from '../assets/images/image_1.jpeg'
 import { Link } from 'react-router-dom'
 
-const SideCard3 = () => {
+const SideCard3 = ({dest, image, title, date}) => {
   return (
-    <Link to={'/post'} style={{textDecoration: 'none'}}>
+    <Link to={dest} style={{textDecoration: 'none'}}>
     <Card variant='outlined' sx={{ maxWidth: '100%',
         border: 'none' }}>
     <CardActionArea >
@@ -16,7 +16,7 @@ const SideCard3 = () => {
         <CardMedia
             component="img"
             height="100"
-            image={Image1}
+            src={image}
             alt="green iguana"
             sx={{
             padding: '10px',
@@ -29,11 +29,11 @@ const SideCard3 = () => {
             flexDirection: 'column',
             justifyContent: 'space-between'
         }}>
-        <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 500, fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
-          This is the title of this article and it is a little more descriptive
+        <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 600, wordWrap: 'break-word', fontSize: 14,  padding: '10px', lineHeight:'1.4em', fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
+          {title}
         </Typography>
-        <Typography gutterBottom variant="h3" component="div" sx={{fontWeight: 500, fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
-            August, 13 2024
+        <Typography gutterBottom variant="h4" component="div" sx={{fontWeight: 500, color: '#8e8e8e', fontSize: 12, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
+          {date}
         </Typography>
         </Box>
       </CardContent>

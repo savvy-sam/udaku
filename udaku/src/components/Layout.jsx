@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 import React from 'react'
 import Popular from '../pages/Popular'
 
@@ -25,7 +25,6 @@ const Layout = ({children}) => {
     lg: 'block'},
     flexGrow: 1
   }}>
-    <h3>POPULAR POSTS</h3>
     < Popular />
   </Box>
   </Container>

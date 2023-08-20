@@ -2,9 +2,11 @@ import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Chip
 import React from 'react'
 import Image1 from '../assets/images/image_1.jpeg'
 import Image2 from '../assets/images/homePhoto.jpg'
+import { Link } from 'react-router-dom'
 
-const SecondaryCard = () => {
+const SecondaryCard = ({image, title, dest, date}) => {
   return (
+    <Link to={dest} style={{textDecoration: 'none'}}>
     <Card raised sx={{maxWidth: 500, height:'400px'}}>
     <CardActionArea sx={{
       height: '100%',
@@ -13,7 +15,7 @@ const SecondaryCard = () => {
       <CardMedia
         component="img"
         height="200px"
-        image={Image1}
+        src={image}
         alt="green iguana"
       />
       <CardContent sx={{
@@ -24,7 +26,7 @@ const SecondaryCard = () => {
           color: 'white',
         }} />
         <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, fontSize: '1.25rem', paddingTop: "10px", paddingX: "7px"}}>
-          This is the title of this article. This is the title of this article
+          {title}
         </Typography>
         <Typography sx={{
             fontSize: '12px',
@@ -33,14 +35,14 @@ const SecondaryCard = () => {
             paddingX: '7px',
             fontFamily: `'Noto Sans Jp, sans-serif'`,
             fontWeight: 400,
-            color:'black',
             overflow: 'hidden',
             overflowWrap: 'anywhere'
-           }}>27 AUGUST 2023 
+           }}>{date}
            </Typography>
       </CardContent>
     </CardActionArea>
   </Card>
+  </Link>
   )
 }
 

@@ -11,7 +11,7 @@ import ViewArticle from './pages/ViewArticle';
 import Health from './pages/Health';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
-import { Box,  } from '@mui/material';
+import { Box, CssBaseline,  } from '@mui/material';
 import {theme} from "./theme.js"
 import { darkTheme } from './darkTheme';
 import { ThemeProvider } from '@mui/material'
@@ -23,7 +23,8 @@ function App() {
   const Layout = () => {
     return (
       <ThemeProvider theme={mode==="dark" ? darkTheme: theme}>
-      <Box bgcolor={"Background.default"} color={"text.primary"}>
+      <CssBaseline />
+      <Box>
           <Navbar setMode={setMode} mode={mode} />
           <Outlet />
           <Footer />

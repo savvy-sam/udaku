@@ -46,23 +46,56 @@ const Home = () => {
                 showThumbs={false}
                 useKeyboardArrows
                 autoPlay>
-                  <FeaturedCard />
-                  <FeaturedCard />
-                  <FeaturedCard />
-                  <FeaturedCard />
+                  <FeaturedCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1601775339819-1721f2d853c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=847&q=80'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
+                  <FeaturedCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1578776704351-d900ace79a76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=404&q=80'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
+                  
+                  <FeaturedCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1591129963877-355ab1c66e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNlbGVicml0aWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
+                  <FeaturedCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1633256394607-caa776f871b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
                 </Carousel>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <SecondaryCard />
+                  <SecondaryCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1601775339819-1721f2d853c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=847&q=80'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <SecondaryCard />
+                <SecondaryCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1578776704351-d900ace79a76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=404&q=80'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                    <SecondaryCard />
+                <SecondaryCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1591129963877-355ab1c66e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNlbGVicml0aWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                    <SecondaryCard />
+                <SecondaryCard
+                  dest={'/post'}
+                  image={'https://images.unsplash.com/photo-1633256394607-caa776f871b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'}
+                  title={"This is the day that the lord has made"}
+                  date={'17TH AUGUST 2023'}/>
                 </Grid>
                 </Grid>
             </Container>

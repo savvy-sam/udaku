@@ -2,9 +2,11 @@ import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Chip
 import React from 'react'
 import Image1 from '../assets/images/image_1.jpeg'
 import Image2 from '../assets/images/homePhoto.jpg'
+import { Link } from 'react-router-dom'
 
-const PopularSecondaryCard = () => {
+const PopularSecondaryCard = ({dest, image, title, date}) => {
   return (
+    <Link style={{textDecoration: 'none'}} to={dest}>
     <Card variant='outlined' sx={{maxWidth: 500, height:'360px', border: 'none'}}>
     <CardActionArea sx={{
       height: '100%',
@@ -12,7 +14,7 @@ const PopularSecondaryCard = () => {
       <CardMedia
         component="img"
         height="200px"
-        image={Image1}
+        src={image}
         alt="green iguana"
       />
       <CardContent sx={{
@@ -21,22 +23,23 @@ const PopularSecondaryCard = () => {
        justifyContent: 'space-between',
       }}>
         <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, fontSize: '1.25rem', paddingTop: "10px",}}>
-          This is the title of this article. This is the title of this article
+          {title}
         </Typography>
-        <Typography sx={{
+        <Typography gutterBottom sx={{
             fontSize: '12px',
-            position: 'absolute',
-            bottom: '15px',
             fontFamily: `'Noto Sans Jp, sans-serif'`,
             fontWeight: 400,
-            color:'black',
+            color:'#8e8e8e',
             overflow: 'hidden',
             overflowWrap: 'anywhere'
-           }}>27 AUGUST 2023 
+           }}>{
+            date
+           }
            </Typography>
       </CardContent>
     </CardActionArea>
   </Card>
+  </Link>
   )
 }
 

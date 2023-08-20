@@ -1,14 +1,14 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Box} from '@mui/material'
+import { Box, Typography} from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 
   const {palette} = useTheme();
 
   const FooterBox = styled(Box)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.main,
     display: 'flex',
     alignItems: 'start',
     flexDirection: 'column',
@@ -18,16 +18,17 @@ const Footer = () => {
 
 
   return (
+    <>
+    <hr />
     <Box sx={{
       display: "flex",
       flexDirection: {xs: "column", sm: 'row'},
       justifyContent: 'space-between',
       width: '100%',
-      backgroundColor: palette.primary.main,
       paddingX: '15px',
     }}><FooterBox>
         <h2>Categories</h2>
-            <span>Graphics & Design</span>
+            <Link style={{textDecoration: 'none'}}>Graphics & Design</Link>
             <span>Digital Marketing</span>
             <span>Writing & Translation</span>
             <span>Video & Animation</span>
@@ -74,6 +75,7 @@ const Footer = () => {
           </div>
           </FooterBox> 
     </Box>
+    </>
   )
 }
 
