@@ -1,10 +1,34 @@
 import { Box, Container, Stack } from '@mui/material'
 import React from 'react'
-import SideCard from '../components/SideCard2'
 import SideCard2 from '../components/SideCard2'
 import Popular from './Popular'
+import { useQuery } from 'react-query'
+import { client } from '../client'
 
 const Celebrities = () => {
+
+  const celebritiesQuerry = `
+  *[_type=="post" && category=="Celebrities"][0...10]{
+    title,
+    slug,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }
+  `
+
+  const fetchCelebritiesPost = async ()=>{
+    const results = await client.fetch(celebritiesQuerry);
+    return results
+  }
+
+  const {data, isLoading, isError} =useQuery('latestPosts', fetchCelebritiesPost);
+
+
   return (
   <Container maxWidth={'lg'}
   sx={{

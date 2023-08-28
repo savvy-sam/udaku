@@ -7,10 +7,48 @@ import { useTheme } from '@emotion/react'
 import SecondaryCard from '../components/SecondaryCard'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { client } from '../client'
+import { useQuery } from 'react-query'
 
 const Home = () => {
 
+  const trendingQuery = `
+  *[_type=="post"]{
+    title,
+    slug,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }
+  `
+
+  const latestQuery = `*[_type=="post"]{
+    title,
+    slug,
+    summary,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }`
+
   const {palette}= useTheme();
+
+  const fetchLatestPosts = async (queryToRun)=>{
+    const results = await client.fetch(queryToRun);
+    return results
+  }
+
+  const {data: firstData, isLoading: firstIsLoading, isError: firstIsError} =useQuery('latestPosts', fetchLatestPosts(trendingQuery));
+  const {data: secondData, isLoading: secondIsLoading, isError: secondIsError} =useQuery('latestPosts', fetchLatestPosts(latestQuery));
+
 
   return (
    <Box sx={{

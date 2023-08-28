@@ -15,21 +15,32 @@ import { Box, CssBaseline,  } from '@mui/material';
 import {theme} from "./theme.js"
 import { darkTheme } from './darkTheme';
 import { ThemeProvider } from '@mui/material'
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 function App() {
 
   const [mode, setMode] = useState("light");
 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        cacheTime: 100*60*60*24 //24 hours 
+      },
+    },
+  });
+
   const Layout = () => {
     return (
-      <ThemeProvider theme={mode==="dark" ? darkTheme: theme}>
-      <CssBaseline />
-      <Box>
-          <Navbar setMode={setMode} mode={mode} />
-          <Outlet />
-          <Footer />
-      </Box>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={mode==="dark" ? darkTheme: theme}>
+          <CssBaseline />
+            <Box>
+                <Navbar setMode={setMode} mode={mode} />
+                <Outlet />
+                <Footer />
+            </Box>
+        </ThemeProvider>
+      </QueryClientProvider>
     );
   };
 

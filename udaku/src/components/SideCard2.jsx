@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Chip, Typography } from '@mui/material'
+import { Box, Card, CardActionArea,CardContent, CardMedia, Chip, Typography } from '@mui/material'
 import React from 'react'
 import Image1 from '../assets/images/image_1.jpeg'
 
@@ -38,7 +38,7 @@ const SideCard2 = () => {
                 color: 'white',
                 width: '100px',
                 marginBottom: '7px',
-            }}>Trending Gossip</Chip>
+            }} />
             <h3  variant="h3" sx={{fontWeight: 500, fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
             This is the title of this article and it is a little more descriptive
             </h3>
