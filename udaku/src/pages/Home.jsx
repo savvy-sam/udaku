@@ -16,13 +16,14 @@ const Home = () => {
   *[_type=="post"]{
     title,
     slug,
+    publishedAt,
     mainImage{
       asset->{
         _id,
         url
       },
       alt
-    }
+    },
   }
   `
 
@@ -30,25 +31,20 @@ const Home = () => {
     title,
     slug,
     summary,
+    publishedAt,
     mainImage{
       asset->{
         _id,
         url
       },
       alt
-    }
+    },
   }`
 
   const {palette}= useTheme();
 
-  const fetchLatestPosts = async (queryToRun)=>{
-    const results = await client.fetch(queryToRun);
-    return results
-  }
-
-  const {data: firstData, isLoading: firstIsLoading, isError: firstIsError} =useQuery('latestPosts', fetchLatestPosts(trendingQuery));
-  const {data: secondData, isLoading: secondIsLoading, isError: secondIsError} =useQuery('latestPosts', fetchLatestPosts(latestQuery));
-
+  const {data: firstData, isLoading: firstIsLoading, isError: firstIsError} =useQuery('trendingPosts',()=>client.fetch(trendingQuery));
+  const {data: secondData, isLoading: secondIsLoading, isError: SecondIsError} =useQuery('latestPosts',()=>client.fetch(latestQuery));
 
   return (
    <Box sx={{
@@ -84,57 +80,31 @@ const Home = () => {
                 showThumbs={false}
                 useKeyboardArrows
                 autoPlay>
-                  <FeaturedCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1601775339819-1721f2d853c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=847&q=80'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
-                  <FeaturedCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1578776704351-d900ace79a76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=404&q=80'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
-                  
-                  <FeaturedCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1591129963877-355ab1c66e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNlbGVicml0aWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
-                  <FeaturedCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1633256394607-caa776f871b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
+
+                  {
+                    firstData?.map((item)=>(
+                      <FeaturedCard key={item.slug.current}
+                      dest={'/post' + item.slug.current}
+                      image={item.mainImage.asset.url}
+                      alt={item.mainImage.alt}
+                      title={item.title}
+                      date={item.publishedAt}/>
+                    ))
+                  }
                 </Carousel>
                 </Grid>
-                <Grid item xs={12} sm={4}>
-                  <SecondaryCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1601775339819-1721f2d853c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=847&q=80'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                <SecondaryCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1578776704351-d900ace79a76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=404&q=80'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                <SecondaryCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1591129963877-355ab1c66e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNlbGVicml0aWVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                <SecondaryCard
-                  dest={'/post'}
-                  image={'https://images.unsplash.com/photo-1633256394607-caa776f871b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'}
-                  title={"This is the day that the lord has made"}
-                  date={'17TH AUGUST 2023'}/>
-                </Grid>
+                  {
+                    secondData?.map((post)=>(
+                      <Grid key={post.slug.current} item xs={12} sm={4}>
+                      <SecondaryCard
+                        dest={'/post'+ post.slug.current}
+                        image={post.mainImage.asset.url}
+                        title={post.title}
+                        alt={post.alt}
+                        date={post.publishedAt}/>
+                      </Grid>
+                    ))
+                  }
                 </Grid>
             </Container>
       </Box>
@@ -147,18 +117,19 @@ const Home = () => {
           <h3>LATEST</h3>
           < hr />
           <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <MainCard />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <MainCard />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <MainCard />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-              <MainCard />
-          </Grid>
+            {
+              secondData?.map((post)=>(
+                <Grid key={post.slug.current} item xs={12} sm={6}>
+                  <MainCard
+                        dest={'/post'+ post.slug.current}
+                        image={post.mainImage.asset.url}
+                        title={post.title}
+                        summary={post.summary}
+                        alt={post.alt}
+                        date={post.publishedAt}/>
+                </Grid>
+              ))
+            }
           </Grid>
         </Box>
         <Box flex={1}>

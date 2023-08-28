@@ -1,8 +1,16 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Box, Typography} from '@mui/material'
+import { Box, Divider, List, ListItem, ListItemIcon, ListItemText, Typography} from '@mui/material'
 import React from 'react'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from 'react-router-dom';
+
+const aboutUs=[
+  {title: "Advertise With Us", path: "/"},
+  {title: "Contact Us", path: "/"},
+  {title: "Careers", path: "/"},
+  {title: "Privacy Policy", path: "/"},
+]
 
 const Footer = () => {
 
@@ -18,64 +26,80 @@ const Footer = () => {
 
 
   return (
-    <>
+    <Box bgcolor='#0a0a0a' 
+    sx={{
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
     <hr />
     <Box sx={{
       display: "flex",
-      flexDirection: {xs: "column", sm: 'row'},
+      width: {xs: '100%', sm: "80%"},
       justifyContent: 'space-between',
-      width: '100%',
+      flexDirection: {xs: "column", sm: 'row'},
       paddingX: '15px',
     }}><FooterBox>
-        <h2>Categories</h2>
-            <Link style={{textDecoration: 'none'}}>Graphics & Design</Link>
-            <span>Digital Marketing</span>
-            <span>Writing & Translation</span>
-            <span>Video & Animation</span>
-            <span>Music & Audio</span>
-            <span>Programming & Tech</span>
-            <span>Data</span>
+        <Typography component='h2' sx={{color: 'white', alignSelf: 'center'}}>ABOUT US</Typography>
+        <hr style={{backgroundColor: 'white', width: '100%'}}/>
+        <List  disablePadding dense={true}>
+          {
+            aboutUs.map((item, index)=>(
+              <Link style={{textDecoration: 'none', color:"white"}} key={index} to={item.path}>
+              <ListItem>
+              <ListItemIcon style={{minWidth: '30px'}}>
+                <ArrowForwardIosIcon fontSize='small' color='warning' />
+              </ListItemIcon>
+              <ListItemText>
+                {item.title}
+              </ListItemText>
+            </ListItem>
+            </Link>
+            ))
+          } 
+          </List>
         </FooterBox>
-          <FooterBox>
-            <h2>About</h2>
-            <span>Press & News</span>
-            <span>Partnerships</span>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-            <span>Intellectual Property Claims</span>
-            <span>Investor Relations</span>
-            <span>Contact Sales</span>
+        <FooterBox>
+                <Typography component='h2' sx={{color: 'white', alignSelf: 'center'}}>ABOUT US</Typography>
+              <hr style={{backgroundColor: 'white', width: '100%'}}/>
+              <List  disablePadding dense={true}>
+                {
+                  aboutUs.map((item, index)=>(
+                    <Link style={{textDecoration: 'none', color:"white"}} key={index} to={item.path}>
+                    <ListItem>
+                    <ListItemIcon style={{minWidth: '30px'}}>
+                      <ArrowForwardIosIcon fontSize='small' color='warning' />
+                    </ListItemIcon>
+                    <ListItemText>
+                      {item.title}
+                    </ListItemText>
+                  </ListItem>
+                  </Link>
+                  ))
+                } 
+                </List>
           </FooterBox>
           <FooterBox>
-            <h2>Support</h2>
-            <span>Help & Support</span>
-            <span>Trust & Safety</span>
-            <span>Selling on Fiverr</span>
-            <span>Buying on Fiverr</span>
+              <Typography component='h2' sx={{color: 'white', alignSelf: 'center'}}>ABOUT US</Typography>
+                <hr style={{backgroundColor: 'white', width: '100%'}}/>
+                <List  disablePadding dense={true}>
+                  {
+                    aboutUs.map((item, index)=>(
+                      <Link style={{textDecoration: 'none', color:"white"}} key={index} to={item.path}>
+                      <ListItem>
+                      <ListItemIcon style={{minWidth: '30px'}}>
+                        <ArrowForwardIosIcon fontSize='small' color='warning' />
+                      </ListItemIcon>
+                      <ListItemText>
+                        {item.title}
+                      </ListItemText>
+                    </ListItem>
+                    </Link>
+                    ))
+                  } 
+                  </List>
           </FooterBox>
-          <FooterBox>
-          <h2>Support</h2>
-          <div className="right">
-            <div className="social">
-              <img src="/img/twitter.png" alt="" />
-              <img src="/img/facebook.png" alt="" />
-              <img src="/img/linkedin.png" alt="" />
-              <img src="/img/pinterest.png" alt="" />
-              <img src="/img/instagram.png" alt="" />
-            </div>
-            <div className="link">
-              <img src="/img/language.png" alt="" />
-              <span>English</span>
-            </div>
-            <div className="link">
-              <img src="/img/coin.png" alt="" />
-              <span>USD</span>
-            </div>
-            <img src="/img/accessibility.png" alt="" />
-          </div>
-          </FooterBox> 
     </Box>
-    </>
+    </Box>
   )
 }
 

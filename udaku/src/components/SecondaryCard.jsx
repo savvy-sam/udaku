@@ -4,7 +4,7 @@ import Image1 from '../assets/images/image_1.jpeg'
 import Image2 from '../assets/images/homePhoto.jpg'
 import { Link } from 'react-router-dom'
 
-const SecondaryCard = ({image, title, dest, date}) => {
+const SecondaryCard = ({image, title, dest, date, alt}) => {
   return (
     <Link to={dest} style={{textDecoration: 'none'}}>
     <Card raised sx={{maxWidth: 500, height:'400px'}}>
@@ -16,7 +16,7 @@ const SecondaryCard = ({image, title, dest, date}) => {
         component="img"
         height="200px"
         src={image}
-        alt="green iguana"
+        alt={alt}
       />
       <CardContent sx={{
         height: '200px'

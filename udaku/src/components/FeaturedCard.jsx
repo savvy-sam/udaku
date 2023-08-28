@@ -2,7 +2,7 @@ import { Box, Chip, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const FeaturedCard = ({dest, image, title, date }) => {
+const FeaturedCard = ({dest, image, title, alt, date }) => {
   return (
     <Box sx={{
       maxWidth: 900,
@@ -18,7 +18,7 @@ const FeaturedCard = ({dest, image, title, date }) => {
           }}
            component='img'
            src={image}
-           alt='homepage'/>
+           alt={alt}/>
            <></>
            <Box sx={{
             display: 'flex',

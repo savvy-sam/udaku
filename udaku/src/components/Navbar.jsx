@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
-import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import { IconButton, Menu, MenuItem, Switch } from '@mui/material';
+import { IconButton, Menu, MenuItem, Switch, styled } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css" 
-
+import twitterImage from '../assets/images/twitter.png'
+import facebookImage from '../assets/images/facebook.png'
+import instagramImage from '../assets/images/instagram.png'
 
 const pages = [
   {
@@ -74,17 +75,19 @@ const Navbar = ({mode,setMode}) => {
     transition: '0.5s all ease',
     height: '50px'
    }}>
-      <Box  flex={4} sx={{
+      <Box  flex={1} sx={{
         display: {xs: 'block', sm: 'none'},
         width: '50%',
       }}>
       <IconButton
             size="large"
             edge="start"
-            color="inherit"
+            sx={{
+              color: '#301934',
+              mr: 2
+            }}
             aria-label="open drawer"
             onClick={handleOpenNavMenu}
-            sx={{ mr: 2 }}
           >
             <MenuIcon />
       </IconButton>
@@ -136,28 +139,57 @@ const Navbar = ({mode,setMode}) => {
           }
       </Box>
       <Box flex={1} sx={{
-        flexGrow: 1,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: "center",
       }}>
-        <Box flex={1}>
-        <Toggle
-          checked={mode==="dark"}
-          onChange={e=>setMode(mode === "light" ? "dark" : "light")}
-          icons={{ checked: "🌙", unchecked: "🔆" }}
-          aria-label="Dark mode toggle"
-        />
+        <Box sx={{
+          flex: {xs: 2, sm: 1}
+        }}>
+            <Box sx={{height: '24px'}}>
+              <Toggle
+                checked={mode==="dark"}
+                onChange={e=>setMode(mode === "light" ? "dark" : "light")}
+                icons={{ checked: "🌙", unchecked: "🔆" }}
+                aria-label="Dark mode toggle"
+              />
+          </Box>
         </Box>
         <Box flex={3} sx={{
           display: 'flex',
           justifyContent: 'flex-end',
-          flexDirection: 'row'
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: '10px',
         }}>
-        <FacebookRoundedIcon/> 
-        <FacebookRoundedIcon/>
-        <FacebookRoundedIcon/>
+              <Box
+              component="img"
+              sx={{
+                height: 24,
+                width: 24,
+              }}
+              alt="t"
+              src={twitterImage}
+            />
+             <Box
+              component="img"
+              sx={{
+                height: 24,
+                width: 24,
+              }}
+              alt="t"
+              src={facebookImage}
+            />
+             <Box
+              component="img"
+              sx={{
+                height: 24,
+                width: 24,
+              }}
+              alt="i"
+              src={instagramImage}
+            />
         </Box>
       </Box>
    </Box>
