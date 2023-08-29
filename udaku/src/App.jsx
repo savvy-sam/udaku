@@ -82,7 +82,7 @@ function App() {
           element: <Sports />,
         },
         {
-          path: "/post/",
+          path: "/post/:id",
           element: <ViewArticle />,
         },
       ],

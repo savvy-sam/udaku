@@ -9,6 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { client } from '../client'
 import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -83,12 +84,14 @@ const Home = () => {
 
                   {
                     firstData?.map((item)=>(
+                      <Link to={'/post/'+ item.slug.current}>
                       <FeaturedCard key={item.slug.current}
                       dest={'/post' + item.slug.current}
                       image={item.mainImage.asset.url}
                       alt={item.mainImage.alt}
                       title={item.title}
                       date={item.publishedAt}/>
+                      </Link>
                     ))
                   }
                 </Carousel>
@@ -97,7 +100,7 @@ const Home = () => {
                     secondData?.map((post)=>(
                       <Grid key={post.slug.current} item xs={12} sm={4}>
                       <SecondaryCard
-                        dest={'/post'+ post.slug.current}
+                        dest={'/post/'+ post.slug.current}
                         image={post.mainImage.asset.url}
                         title={post.title}
                         alt={post.alt}

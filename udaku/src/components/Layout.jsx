@@ -7,7 +7,7 @@ const Layout = ({children}) => {
   <Container maxWidth={'lg'}
   sx={{
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: {xs: 'column', sm: 'row'},
     gap: '20px'
   }}>
   <Box sx={{
@@ -21,7 +21,7 @@ const Layout = ({children}) => {
   <Box flex={1}
   sx={{
     padding: '7px',
-    display: {xs: 'none', sm:'none', md: 'none',
+    display: {xs: 'block', sm:'block', md: 'block',
     lg: 'block'},
     flexGrow: 1
   }}>
