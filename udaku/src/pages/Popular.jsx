@@ -2,8 +2,39 @@ import React from 'react'
 import SideCard3 from '../components/SideCard3'
 import { Box, Stack, Typography } from '@mui/material'
 import PopularSecondaryCard from '../components/PopularSecondaryCard'
+import { useQuery } from 'react-query'
+import { client } from '../client'
 
 const Popular = () => {
+
+const popularQuerry = `
+  *[_type=="post" && 'popular' in tags][0...10]{
+    title,
+    slug,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    }
+  }
+  `
+   const {data, isLoading, isError, error} =useQuery({
+      queryKey: ['popularPosts'],
+      queryFn: ()=>client.fetch(popularQuerry)});
+  
+    if(isLoading) return(<div>loading...</div>)
+  
+    if(isError) {
+      console.log(error)
+      return(<div>error...</div>)
+    }
+
+   const firstElement = data[0];
+   const filteredArray = data.slice(1) 
+
+
   return (
     <Box>
         <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 600, wordWrap: 'break-word', fontSize: 14,  padding: '10px', lineHeight:'1.4em', fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
@@ -11,30 +42,19 @@ const Popular = () => {
         </Typography>
         <Stack direction='column'>
             < PopularSecondaryCard
-            dest={'/post'}
-            image={'https://images.unsplash.com/photo-1679679008383-6f778fe07828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80'}
-            title={'Man City Lose Amid Kevin De Bryne Injury'}
-            date={"16TH AUGUST 2024"}/>
-            < SideCard3 dest={'/post'} 
-                image={'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'} 
-                title={"This is the Title of this page amidst crypto crash"} 
-                date={'16TH AUGUST 2022'}/>
-             < SideCard3 dest={'/post'} 
-                image={'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'} 
-                title={"This is the Title of this page"} 
-                date={'16TH AUGUST 2022'}/>
-             < SideCard3 dest={'/post'} 
-                image={'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'} 
-                title={"This is the Title of this page"} 
-                date={'16TH AUGUST 2022'}/>
-             < SideCard3 dest={'/post'} 
-                image={'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'} 
-                title={"This is the Title of this page"} 
-                date={'16TH AUGUST 2022'}/>
-             < SideCard3 dest={'/post'} 
-                image={'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'} 
-                title={"This is the Title of this page"} 
-                date={'16TH AUGUST 2022'}/>
+            dest={'/post/'+ firstElement.slug.current}
+            image={firstElement.mainImage.asset.url}
+            title={firstElement.title}
+            date={firstElement.publishedAt}/>
+
+            {
+               filteredArray.map((item, index) =>(
+               < SideCard3 key={index} dest={'/post'} 
+                  image={item.mainImage.asset.url} 
+                  title={item.title} 
+                  date={item.publishedAt}/>
+               ))
+            }
         </Stack>
     </Box>
   )

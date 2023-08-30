@@ -16,6 +16,8 @@ import {theme} from "./theme.js"
 import { darkTheme } from './darkTheme';
 import { ThemeProvider } from '@mui/material'
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
 
 function App() {
 
@@ -24,7 +26,9 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        cacheTime: 100*60*60*24 //24 hours 
+        cacheTime: 100*60*60*24,
+        refetchOnWindowFoucus: false,
+        staleTime: 30*60*100 //30 minutes
       },
     },
   });
@@ -40,6 +44,7 @@ function App() {
                 <Footer />
             </Box>
         </ThemeProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     );
   };

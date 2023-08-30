@@ -1,9 +1,11 @@
 import { Box, Card, CardActionArea,CardContent, CardMedia, Chip, Typography } from '@mui/material'
 import React from 'react'
 import Image1 from '../assets/images/image_1.jpeg'
+import { Link } from 'react-router-dom'
 
-const SideCard2 = () => {
+const SideCard2 = ({dest, summary, date, title, image}) => {
   return (
+    <Link style={{textDecoration: 'none'}} to={dest}>
     <Card sx={{ maxWidth: '900px' }}>
     <CardActionArea >
     <CardContent sx={{
@@ -17,7 +19,7 @@ const SideCard2 = () => {
         }}>
         <CardMedia
         component="img"
-        image={Image1}
+        src={image}
         alt="green iguana"
         sx={{
           paddingX: '10px',
@@ -40,16 +42,17 @@ const SideCard2 = () => {
                 marginBottom: '7px',
             }} />
             <h3  variant="h3" sx={{fontWeight: 500, fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
-            This is the title of this article and it is a little more descriptive
+              {title}
             </h3>
             <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 500, fontSize: 14, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
-            This is the title of this article and it is a little more descriptive. this title should nto be very long so that it does not overflow
+              {summary}
             </Typography>
-            <Typography paddingY={3}>16TH AUGUST 2023</Typography>
+            <Typography paddingY={3}>{date}</Typography>
       </Box>
       </CardContent>
     </CardActionArea>
   </Card>
+  </Link>
   )
 }
 

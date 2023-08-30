@@ -26,7 +26,9 @@ const ViewArticle = () => {
     "name": author->name,
   }`
 
-  const {data, isLoading, isError} =useQuery('post',()=>client.fetch(singleQuery));
+  const {data, isLoading, isError} =useQuery({
+    queryKey: ['posts', id],
+    queryFn: ()=>client.fetch(singleQuery)});
 
   if(isLoading) return(<div>loading...</div>)
 

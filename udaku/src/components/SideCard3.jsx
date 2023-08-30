@@ -20,7 +20,8 @@ const SideCard3 = ({dest, image, title, date}) => {
             alt="green iguana"
             sx={{
             padding: '10px',
-            borderRadius: '10%'
+            borderRadius: '10%',
+            maxWidth: '50%'
             }}
         />
         <Box 

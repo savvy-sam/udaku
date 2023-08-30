@@ -4,12 +4,14 @@ import SideCard2 from '../components/SideCard2'
 import Popular from './Popular'
 import { useQuery } from 'react-query'
 import { client } from '../client'
+import Layout from '../components/Layout'
 
 const Celebrities = () => {
 
   const celebritiesQuerry = `
-  *[_type=="post" && category=="Celebrities"][0...10]{
+  *[_type=="post" && 'Celebrities' in categories[]->title][0...10]{
     title,
+    summary,
     slug,
     mainImage{
       asset->{
@@ -20,44 +22,35 @@ const Celebrities = () => {
     }
   }
   `
+  const {data, isLoading, isError, error} =useQuery({
+    queryKey: ['celebritiesPosts'],
+    queryFn: ()=>client.fetch(celebritiesQuerry)});
 
-  const fetchCelebritiesPost = async ()=>{
-    const results = await client.fetch(celebritiesQuerry);
-    return results
+  if(isLoading) return(<div>loading...</div>)
+
+  if(isError) {
+    console.log(error)
+    return(<div>error...</div>)
   }
 
-  const {data, isLoading, isError} =useQuery('latestPosts', fetchCelebritiesPost);
-
-
   return (
-  <Container maxWidth={'lg'}
-  sx={{
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '20px'
-  }}>
+  <Layout>
   <Box sx={{
   }} flex={2.5}>
     <Stack direction={'column'} spacing={1}>
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
-      <SideCard2 />
+      {
+        data.map((post, index)=>(
+            < SideCard2 key={index}
+            dest={'/post/'+ post.slug.current}
+            image={post.mainImage.asset.url}
+            title={post.title}
+            summary={post.summary}
+            date={post.publishedAt}/>
+        ))
+      }
   </Stack>
   </Box>
-  <Box flex={1}
-  sx={{
-    padding: '7px',
-    display: {xs: 'none', sm:'none', md: 'none',
-    lg: 'block'},
-    flexGrow: 1
-  }}>
-    <h3>POPULAR POSTS</h3>
-    < Popular />
-  </Box>
-  </Container>
+  </Layout>
   )
 }
 
