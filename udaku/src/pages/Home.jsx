@@ -124,7 +124,7 @@ const Home = () => {
               secondData?.map((post)=>(
                 <Grid key={post.slug.current} item xs={12} sm={6}>
                   <MainCard
-                        dest={'/post'+ post.slug.current}
+                        dest={'/post/'+ post.slug.current}
                         image={post.mainImage.asset.url}
                         title={post.title}
                         summary={post.summary}
