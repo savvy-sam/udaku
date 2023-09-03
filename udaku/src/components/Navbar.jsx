@@ -27,8 +27,8 @@ const pages = [
     title: "Economy",
   },
   {
-    path: "/gossip",
-    title: "Gossip",
+    path: "/politics",
+    title: "Politics",
   },
   {
     path: "/health",

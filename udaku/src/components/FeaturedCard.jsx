@@ -19,7 +19,6 @@ const FeaturedCard = ({dest, image, title, alt, date }) => {
            component='img'
            src={image}
            alt={alt}/>
-           <></>
            <Box sx={{
             display: 'flex',
             width: '50%',

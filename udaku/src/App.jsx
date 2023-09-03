@@ -9,7 +9,6 @@ import Music from './pages/Music';
 import Sports from './pages/Sports';
 import ViewArticle from './pages/ViewArticle';
 import Health from './pages/Health';
-import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import { Box, CssBaseline,  } from '@mui/material';
 import {theme} from "./theme.js"
@@ -17,6 +16,8 @@ import { darkTheme } from './darkTheme';
 import { ThemeProvider } from '@mui/material'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import Politics from './pages/Politics';
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -26,9 +27,9 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        cacheTime: 100*60*60*24,
-        refetchOnWindowFoucus: false,
-        staleTime: 30*60*100 //30 minutes
+        cacheTime: 1000 * 60 * 60 * 24,
+        refetchOnWindowFocus: false, 
+        staleTime: 30 * 60 * 1000, 
       },
     },
   });
@@ -71,8 +72,8 @@ function App() {
           element: <Economy />,
         },
         {
-          path: "/gossip",
-          element: <Gossip />,
+          path: "/politics",
+          element: <Politics />,
         },
         {
           path: "/health",
