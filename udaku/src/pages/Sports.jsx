@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 const Sports = () => {
 
-  const sportsQuerry = `
+  const sportsQuery = `
   *[_type=="post" && 'Sports' in categories[]->title][0...10]{
     title,
     summary,
@@ -18,12 +18,13 @@ const Sports = () => {
         url
       },
       alt
-    }
-  }
-  `
+    },
+    publishedAt
+  } | order(publishedAt desc)`;
+
   const {data, isError, error} =useQuery({
     queryKey: ['sportsPosts'],
-    queryFn: ()=>client.fetch(sportsQuerry)});
+    queryFn: ()=>client.fetch(sportsQuery)});
 
   if(isError) {
     console.log(error)

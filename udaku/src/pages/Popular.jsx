@@ -4,10 +4,11 @@ import { Box, Stack, Typography } from '@mui/material'
 import PopularSecondaryCard from '../components/PopularSecondaryCard'
 import { useQuery } from 'react-query'
 import { client } from '../client'
+import { useLocation } from 'react-router-dom'
 
-const Popular = () => {
-
-const popularQuerry = `
+const Popular = ({id}) => {
+  
+  const popularQuery = `
   *[_type=="post" && 'popular' in tags][0...10]{
     title,
     slug,
@@ -17,12 +18,13 @@ const popularQuerry = `
         url
       },
       alt
-    }
-  }
-  `
+    },
+    publishedAt
+  } | order(publishedAt desc)`;
+
    const {data, isLoading, isError, error} =useQuery({
       queryKey: ['popularPosts'],
-      queryFn: ()=>client.fetch(popularQuerry)});
+      queryFn: ()=>client.fetch(popularQuery)});
   
     if(isLoading) return(<div>loading...</div>)
   
@@ -31,7 +33,10 @@ const popularQuerry = `
       return(<div>error...</div>)
     }
 
-   const firstElement = data[0];
+   const randomNumber = Math.floor(Math.random() * (9 - 2 + 1)) + 2;
+   
+   const firstElement = data[randomNumber];
+
    const filteredArray = data.slice(1) 
 
 
@@ -42,14 +47,15 @@ const popularQuerry = `
         </Typography>
         <Stack direction='column'>
             < PopularSecondaryCard
-            dest={'/post/'+ firstElement.slug.current}
-            image={firstElement.mainImage.asset.url}
-            title={firstElement.title}
-            date={firstElement.publishedAt}/>
+            dest={'/post/'+ firstElement?.slug.current}
+            image={firstElement?.mainImage.asset.url}
+            title={firstElement?.title}
+            date={firstElement?.publishedAt}/>
 
             {
                filteredArray.map((item, index) =>(
-               < SideCard3 key={index} dest={'/post'} 
+               < SideCard3 key={index} 
+                  dest={'/post/'+ firstElement.slug.current}
                   image={item.mainImage.asset.url} 
                   title={item.title} 
                   date={item.publishedAt}/>

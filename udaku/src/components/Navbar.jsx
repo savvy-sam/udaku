@@ -71,7 +71,7 @@ const Navbar = ({mode,setMode}) => {
     position: 'sticky',
     zIndex: 999,
     top: 0,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#0a0a0a',
     transition: '0.5s all ease',
     height: '50px'
    }}>
@@ -117,7 +117,7 @@ const Navbar = ({mode,setMode}) => {
                           fontFamily: 'Macan, "Noto Sans JP", Macan, Helvetica, sans-serif',
                           fontWeight: 600,
                           fontSize: '17px',
-                          color: '#687385',}}>
+                          color: '#FFFFFF',}}>
                             {item.title}
                   </Link>
                 </MenuItem>
@@ -131,7 +131,7 @@ const Navbar = ({mode,setMode}) => {
                 fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`,
                 fontWeight: 600,
                 fontSize: '14px',
-                color: '#687385',
+                color: '#FFFFFF',
               }} key={index} to={item.path}>
                 {item.title}
               </Link>

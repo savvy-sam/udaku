@@ -1,6 +1,5 @@
 import { Box, Card, CardActionArea,CardContent, CardMedia, Chip, Typography } from '@mui/material'
 import React from 'react'
-import Image1 from '../assets/images/image_1.jpeg'
 import { Link } from 'react-router-dom'
 
 const SideCard2 = ({dest, summary, date, title, image}) => {
@@ -20,7 +19,7 @@ const SideCard2 = ({dest, summary, date, title, image}) => {
         <CardMedia
         component="img"
         src={image}
-        alt="green iguana"
+        alt="post image"
         sx={{
           paddingX: '10px',
           height: {xs: '200px', sm: '200px'},

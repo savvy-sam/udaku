@@ -1,8 +1,7 @@
 import { Box, Chip, Typography } from '@mui/material'
 import React from 'react'
-import { Link } from 'react-router-dom';
 
-const FeaturedCard = ({dest, image, title, alt, date }) => {
+const FeaturedCard = ({ image, title, alt, date }) => {
   return (
     <Box sx={{
       maxWidth: 900,
@@ -10,7 +9,6 @@ const FeaturedCard = ({dest, image, title, alt, date }) => {
       borderRadius: '5px',
       postion:'relative'
     }}>
-      <Link to={dest}>
         <Box sx={{
             height: '100%',
             width: '100%',
@@ -50,7 +48,6 @@ const FeaturedCard = ({dest, image, title, alt, date }) => {
             overflowWrap: 'anywhere'
            }}>{date}</Typography>
            </Box>
-      </Link>
     </Box>
   )
 }

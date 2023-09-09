@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 const Music = () => {
 
-  const MusicQuerry = `
+  const musicQuery = `
   *[_type=="post" && 'Music' in categories[]->title][0...10]{
     title,
     summary,
@@ -18,9 +18,10 @@ const Music = () => {
         url
       },
       alt
-    }
-  }
-  `
+    },
+    publishedAt
+  } | order(publishedAt desc)`;
+
   const {data, isError, error} =useQuery({
     queryKey: ['MusicPosts'],
     queryFn: ()=>client.fetch(MusicQuerry)});

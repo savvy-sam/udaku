@@ -8,7 +8,7 @@ import Layout from '../components/Layout'
 
 const Celebrities = () => {
 
-  const celebritiesQuerry = `
+  const celebritiesQuery = `
   *[_type=="post" && 'Celebrities' in categories[]->title][0...10]{
     title,
     summary,
@@ -19,12 +19,13 @@ const Celebrities = () => {
         url
       },
       alt
-    }
-  }
-  `
+    },
+    publishedAt
+  } | order(publishedAt desc)`;
+
   const {data, isLoading, isError, error} =useQuery({
     queryKey: ['celebritiesPosts'],
-    queryFn: ()=>client.fetch(celebritiesQuerry)});
+    queryFn: ()=>client.fetch(celebritiesQuery)});
 
   if(isLoading) return(<div>loading...</div>)
 

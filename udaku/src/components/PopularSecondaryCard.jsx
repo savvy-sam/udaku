@@ -13,7 +13,7 @@ const PopularSecondaryCard = ({dest, image, title, date}) => {
         component="img"
         height="200px"
         src={image}
-        alt="green iguana"
+        alt="post image"
       />
       <CardContent sx={{
        display: 'flex',

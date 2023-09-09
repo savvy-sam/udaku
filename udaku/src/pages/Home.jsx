@@ -1,15 +1,14 @@
 import { Box, Container, Grid, Stack } from '@mui/material'
 import React from 'react'
 import MainCard from '../components/MainCard'
-import SideCard from '../components/SideCard'
 import FeaturedCard from '../components/FeaturedCard'
-import { useTheme } from '@emotion/react'
 import SecondaryCard from '../components/SecondaryCard'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { client } from '../client'
 import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
+import PopularHome from './PopularHome'
 
 const Home = () => {
 
@@ -25,8 +24,7 @@ const Home = () => {
       },
       alt
     },
-  }
-  `
+  } | order(publishedAt desc)`;
 
   const latestQuery = `*[_type=="post"]{
     title,
@@ -40,9 +38,8 @@ const Home = () => {
       },
       alt
     },
-  }`
-
-  const {palette}= useTheme();
+  } | order(publishedAt desc)`;
+  
 
   const {data: firstData, isLoading: firstIsLoading, isError: firstIsError} =useQuery('trendingPosts',()=>client.fetch(trendingQuery));
   const {data: secondData, isLoading: secondIsLoading, isError: SecondIsError} =useQuery('latestPosts',()=>client.fetch(latestQuery));
@@ -53,7 +50,7 @@ const Home = () => {
     flexDirection: 'column',
     gap: '10px',
     paddingX: '15px',
-    paddingBottom: '10px'
+    paddingY: '10px'
    }}>
       <Box sx={{marginBottom: 3,
                 display: 'flex',
@@ -83,9 +80,9 @@ const Home = () => {
                 autoPlay>
 
                   {
-                    firstData?.map((item)=>(
-                      <Link to={'/post/'+ item.slug.current}>
-                      <FeaturedCard key={item.slug.current}
+                    firstData?.map((item, index)=>(
+                      <Link to={'/post/'+ item.slug.current} key={index}>
+                      <FeaturedCard
                       dest={'/post' + item.slug.current}
                       image={item.mainImage.asset.url}
                       alt={item.mainImage.alt}
@@ -137,11 +134,7 @@ const Home = () => {
         </Box>
         <Box flex={1}>
           <h4>POPULAR POSTS</h4>
-          <Stack spacing={2}>
-            <SideCard />
-            <SideCard />
-            <SideCard />
-          </Stack>
+          < PopularHome /> 
         </Box>
       </Container>
    </Box>

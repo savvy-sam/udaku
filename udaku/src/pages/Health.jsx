@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 const Health = () => {
 
-  const healthQuerry = `
+  const healthQuery = `
   *[_type=="post" && 'Health' in categories[]->title][0...10]{
     title,
     summary,
@@ -23,7 +23,7 @@ const Health = () => {
   `
   const {data, isError, error} =useQuery({
     queryKey: ['healthPosts'],
-    queryFn: ()=>client.fetch(healthQuerry)});
+    queryFn: ()=>client.fetch(healthQuery)});
 
   if(isError) {
     console.log(error)

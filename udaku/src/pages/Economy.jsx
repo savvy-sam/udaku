@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 const Economy = () => {
 
-  const economyQuerry = `
+  const economyQuery = `
   *[_type=="post" && 'Economy' in categories[]->title][0...10]{
     title,
     summary,
@@ -18,9 +18,10 @@ const Economy = () => {
         url
       },
       alt
-    }
-  }
-  `
+    },
+    publishedAt
+  } | order(publishedAt desc)`;
+
   const {data, isError, error} =useQuery({
     queryKey: ['economyPosts'],
     queryFn: ()=>client.fetch(economyQuerry)});

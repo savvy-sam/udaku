@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 const Politics = () => {
 
-  const politicsQuerry = `
+  const politicsQuery = `
   *[_type=="post" && 'Politics' in categories[]->title][0...10]{
     title,
     summary,
@@ -18,12 +18,13 @@ const Politics = () => {
         url
       },
       alt
-    }
-  }
-  `
+    },
+    publishedAt
+  } | order(publishedAt desc)`;
+
   const {data, isError, error} =useQuery({
     queryKey: ['politicsPosts'],
-    queryFn: ()=>client.fetch(politicsQuerry)});
+    queryFn: ()=>client.fetch(politicsQuery)});
 
   if(isError) {
     console.log(error)

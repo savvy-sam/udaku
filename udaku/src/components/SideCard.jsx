@@ -1,9 +1,11 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
 import Image1 from '../assets/images/image_1.jpeg'
+import { Link } from 'react-router-dom'
 
-const SideCard = () => {
+const SideCard = ({dest, title, img}) => {
   return (
+    <Link style={{textDecoration: 'none'}} to={dest}>
     <Card sx={{ maxWidth: '100%' }}>
     <CardActionArea sx={{
       display: 'flex',
@@ -11,13 +13,13 @@ const SideCard = () => {
     }}>
     <CardContent>
         <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 500, fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
-          This is the title of this article and it is a little more descriptive
+          {title}
         </Typography>
       </CardContent>
       <CardMedia
         component="img"
         height="100"
-        image={Image1}
+        src={img}
         alt="green iguana"
         sx={{
           padding: '10px',
@@ -28,6 +30,7 @@ const SideCard = () => {
     <CardActions>
     </CardActions>
   </Card>
+  </Link>
   )
 }
 

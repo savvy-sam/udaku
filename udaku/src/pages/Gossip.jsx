@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 
 const Gossip = () => {
 
-  const gossipQuerry = `
+  const gossipQuery = `
   *[_type=="post" && 'Gossip' in categories[]->title][0...10]{
     title,
     summary,
@@ -18,12 +18,13 @@ const Gossip = () => {
         url
       },
       alt
-    }
-  }
-  `
+    },
+    publishedAt
+  } | order(publishedAt desc)`;
+
   const {data, isError, error} =useQuery({
     queryKey: ['gossipPosts'],
-    queryFn: ()=>client.fetch(gossipQuerry)});
+    queryFn: ()=>client.fetch(gossipQuery)});
 
   if(isError) {
     console.log(error)
