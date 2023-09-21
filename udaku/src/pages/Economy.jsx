@@ -24,7 +24,7 @@ const Economy = () => {
 
   const {data, isError, error} =useQuery({
     queryKey: ['economyPosts'],
-    queryFn: ()=>client.fetch(economyQuerry)});
+    queryFn: ()=>client.fetch(economyQuery)});
 
   if(isError) {
     console.log(error)
@@ -33,7 +33,8 @@ const Economy = () => {
 
   return (
   <Layout>
-  <Box flex={2.5}>
+  <Box
+  flex={2.5}>
     <Stack direction={'column'} spacing={1}>
       {
         data?.map((post, index)=>(

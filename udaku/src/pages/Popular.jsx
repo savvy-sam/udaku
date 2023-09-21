@@ -33,15 +33,17 @@ const Popular = ({id}) => {
       return(<div>error...</div>)
     }
 
-   const randomNumber = Math.floor(Math.random() * (9 - 2 + 1)) + 2;
-   
+   const randomNumber = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+
    const firstElement = data[randomNumber];
 
    const filteredArray = data.slice(1) 
 
 
   return (
-    <Box>
+    <Box sx={{
+      minHeight: '768px',
+    }}>
         <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 600, wordWrap: 'break-word', fontSize: 14,  padding: '10px', lineHeight:'1.4em', fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
           POPULAR POSTS
         </Typography>

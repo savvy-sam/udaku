@@ -53,13 +53,13 @@ const ViewArticle = () => {
           }}>{data[0]?.title}</Typography>
         </Box>
         <Box sx={{
-          padding: '20px'
+          padding: '10px'
         }}>
         <Box
             component="img"
             sx={{
-              maxHeight: { xs: 466, lg: 600 },
-              maxWidth: { xs: 400, lg: 700 },
+              maxHeight: { xs: 400, lg: 400 },
+              maxWidth: { xs: 300, lg: 500 },
             }}
             alt={data[0].title}
             src={data[0].mainImage.asset.url}

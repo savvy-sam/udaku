@@ -5,9 +5,15 @@ import { IconButton, Menu, MenuItem, Switch, styled } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css" 
-import twitterImage from '../assets/images/twitter.png'
-import facebookImage from '../assets/images/facebook.png'
-import instagramImage from '../assets/images/instagram.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faYoutube,
+  faFacebook,
+  faTwitter,
+  faInstagram
+} from "@fortawesome/free-brands-svg-icons"; // Note the "@" symbol before "fortawesome"
+import { useTheme } from '@emotion/react';
+import './fonts.css'
 
 const pages = [
   {
@@ -46,6 +52,13 @@ const pages = [
 
 const Navbar = ({mode,setMode}) => {
 
+  const {palette}=useTheme();
+
+  const ThemedLink = styled(Link)`
+  color: ${palette.mode === 'dark' ? 'white' : 'black'};
+  text-decoration: none;
+`;
+
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -73,7 +86,7 @@ const Navbar = ({mode,setMode}) => {
     top: 0,
     backgroundColor: '#0a0a0a',
     transition: '0.5s all ease',
-    height: '50px'
+    height: '60px'
    }}>
       <Box  flex={1} sx={{
         display: {xs: 'block', sm: 'none'},
@@ -83,7 +96,7 @@ const Navbar = ({mode,setMode}) => {
             size="large"
             edge="start"
             sx={{
-              color: '#301934',
+              color: '#00FFFF',
               mr: 2
             }}
             aria-label="open drawer"
@@ -112,14 +125,14 @@ const Navbar = ({mode,setMode}) => {
              {pages.map((item, index)=>(
                  <MenuItem key={index}
                   onClick={handleCloseNavMenu}>
-                  <Link to={item.path} style={{
+                  <ThemedLink to={item.path} style={{
                           textDecoration: 'none',
                           fontFamily: 'Macan, "Noto Sans JP", Macan, Helvetica, sans-serif',
                           fontWeight: 600,
                           fontSize: '17px',
-                          color: '#FFFFFF',}}>
+                         }}>
                             {item.title}
-                  </Link>
+                  </ThemedLink>
                 </MenuItem>
             ))}
         </Menu>
@@ -163,33 +176,21 @@ const Navbar = ({mode,setMode}) => {
           flexDirection: 'row',
           gap: '10px',
         }}>
-              <Box
-              component="img"
-              sx={{
-                height: 24,
-                width: 24,
-              }}
-              alt="t"
-              src={twitterImage}
-            />
-             <Box
-              component="img"
-              sx={{
-                height: 24,
-                width: 24,
-              }}
-              alt="t"
-              src={facebookImage}
-            />
-             <Box
-              component="img"
-              sx={{
-                height: 24,
-                width: 24,
-              }}
-              alt="i"
-              src={instagramImage}
-            />
+        <a href="https://www.youtube.com"
+          className="youtube social">
+        <FontAwesomeIcon  icon={faYoutube} size='1x'/>
+        </a>
+      <a href="https://www.facebook.com/"
+        className="facebook social">
+        <FontAwesomeIcon icon={faFacebook} size="1x" />
+      </a>
+      <a href="https://www.twitter.com/Udaku_Gossip" className="twitter social">
+        <FontAwesomeIcon icon={faTwitter} size="1x" />
+      </a>
+      <a href="https://www.instagram.com/"
+        className="instagram social">
+        <FontAwesomeIcon icon={faInstagram} size="1x" />
+      </a>
         </Box>
       </Box>
    </Box>

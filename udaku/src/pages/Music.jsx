@@ -24,7 +24,7 @@ const Music = () => {
 
   const {data, isError, error} =useQuery({
     queryKey: ['MusicPosts'],
-    queryFn: ()=>client.fetch(MusicQuerry)});
+    queryFn: ()=>client.fetch(musicQuery)});
 
   if(isError) {
     console.log(error)

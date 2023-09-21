@@ -30,20 +30,28 @@ const FeaturedCard = ({ image, title, alt, date }) => {
            <Chip sx={{
             width: '100px',
             backgroundColor: 'red',
+            fontWeight: 700,
            }} label="Trending" color="success" />
+           <Box sx={{
+            bgcolor: '#212121',
+            py: 2,
+            px: 1,
+            borderRadius: '20px',
+           }}>
            <Typography variant='h3' sx={{
             fontSize: '1.75rem',
             fontFamily: `'Noto Sans JP, sans-serif'`,
             fontWeight: 900,
-            color:'white',
+            color:'#ffffff',
+            textShadow: '1px 1px 2px pink',
             overflowWrap: 'anywhere'
 
            }}>{title}</Typography>
+           </Box>
            <Typography sx={{
             fontSize: '12px',
             fontFamily: `'Noto Sans Jp, sans-serif'`,
             fontWeight: 400,
-            color:'white',
             overflow: 'hidden',
             overflowWrap: 'anywhere'
            }}>{date}</Typography>

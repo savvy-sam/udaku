@@ -50,7 +50,8 @@ const Home = () => {
     flexDirection: 'column',
     gap: '10px',
     paddingX: '15px',
-    paddingY: '10px'
+    paddingY: '10px',
+    minHeight: '768px'
    }}>
       <Box sx={{marginBottom: 3,
                 display: 'flex',

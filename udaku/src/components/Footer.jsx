@@ -12,6 +12,23 @@ const aboutUs=[
   {title: "Privacy Policy", path: "/"},
 ]
 
+const mainCategories=[
+  {title: "Celebrities", path: "/celebrities"},
+  {title: "Gossip", path: "/gossip"},
+  {title: "Careers", path: "/economy"},
+  {title: "Politics", path: "/politics"},
+]
+
+const secondCategories=[
+  {title: "Health", path: "/health"},
+  {title: "Music", path: "/music"},
+  {title: "Sports", path: "/sports"},
+  {title: "Economy", path: "/economy"},
+]
+
+
+
+
 const Footer = () => {
 
   const {palette} = useTheme();
@@ -59,11 +76,11 @@ const Footer = () => {
           </List>
         </FooterBox>
         <FooterBox>
-                <Typography component='h2' sx={{color: 'white', alignSelf: 'center'}}>ABOUT US</Typography>
+                <Typography component='h2' sx={{color: 'white', alignSelf: 'center'}}>MAIN CATEGORIES</Typography>
               <hr style={{backgroundColor: 'white', width: '100%'}}/>
               <List  disablePadding dense={true}>
                 {
-                  aboutUs.map((item, index)=>(
+                  mainCategories.map((item, index)=>(
                     <Link style={{textDecoration: 'none', color:"white"}} key={index} to={item.path}>
                     <ListItem>
                     <ListItemIcon style={{minWidth: '30px'}}>
@@ -79,11 +96,11 @@ const Footer = () => {
                 </List>
           </FooterBox>
           <FooterBox>
-              <Typography component='h2' sx={{color: 'white', alignSelf: 'center'}}>ABOUT US</Typography>
+              <Typography component='h2' sx={{color: 'white', alignSelf: 'center'}}>OTHER CATEGORIES</Typography>
                 <hr style={{backgroundColor: 'white', width: '100%'}}/>
                 <List  disablePadding dense={true}>
                   {
-                    aboutUs.map((item, index)=>(
+                    secondCategories.map((item, index)=>(
                       <Link style={{textDecoration: 'none', color:"white"}} key={index} to={item.path}>
                       <ListItem>
                       <ListItemIcon style={{minWidth: '30px'}}>
