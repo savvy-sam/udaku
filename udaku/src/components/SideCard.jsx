@@ -12,7 +12,7 @@ const SideCard = ({dest, title, img}) => {
       flexDirection: 'row'
     }}>
     <CardContent>
-        <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 500, fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
+        <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 600, color: '#004db3', fontSize: 16, fontFamily: `"Vollkorn", "Roboto", "sans-serif"`}}>
           {title}
         </Typography>
       </CardContent>
@@ -23,7 +23,8 @@ const SideCard = ({dest, title, img}) => {
         alt="green iguana"
         sx={{
           padding: '10px',
-          borderRadius: '10%'
+          borderRadius: '10%',
+          maxWidth:'50%'
         }}
       />
     </CardActionArea>

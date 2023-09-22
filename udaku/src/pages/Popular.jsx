@@ -57,7 +57,7 @@ const Popular = ({id}) => {
             {
                filteredArray.map((item, index) =>(
                < SideCard3 key={index} 
-                  dest={'/post/'+ firstElement.slug.current}
+                  dest={'/post/'+ item.slug.current}
                   image={item.mainImage.asset.url} 
                   title={item.title} 
                   date={item.publishedAt}/>

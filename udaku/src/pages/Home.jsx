@@ -49,8 +49,8 @@ const Home = () => {
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
-    paddingX: '15px',
-    paddingY: '10px',
+    paddingX: {xs: '5px', sm: '10px', md: "10px" },
+    paddingY: {xs: '5px', md: '10px'},
     minHeight: '768px'
    }}>
       <Box sx={{marginBottom: 3,

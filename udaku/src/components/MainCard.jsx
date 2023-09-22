@@ -1,4 +1,5 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+import dayjs from 'dayjs'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -22,10 +23,10 @@ const MainCard = ({title, dest, image, summary, date, alt}) => {
       <CardContent sx={{
         height: '220px'
       }}>
-        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, paddingX: '7px', paddingBottom: '7px'}}>
+        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, color: '#004db3', fontFamily: 'Vollkorn', paddingX: '7px', paddingBottom: '7px'}}>
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{paddingX: '7px'}}>
+        <Typography variant="body2" color="text.secondary" sx={{paddingX: '7px', fontWeight: 600, fontSize: '17', fontFamily: 'Ubuntu', lineHeight: 1.7}}>
         {summary}
         </Typography>
         <Typography sx={{
@@ -33,13 +34,13 @@ const MainCard = ({title, dest, image, summary, date, alt}) => {
             paddingX: '7px',
             paddingTop: '15px',
             fontFamily: `'Noto Sans Jp, sans-serif'`,
-            fontWeight: 400,
+            fontWeight: 500,
             color:'black',
             overflow: 'hidden',
             position: 'absolute',
             bottom: '15px',
             overflowWrap: 'anywhere'
-           }}>{date}
+           }}>{dayjs(date).format('YYYY-MM-DD')}
            </Typography>
       </CardContent>
     </CardActionArea>

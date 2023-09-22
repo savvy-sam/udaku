@@ -1,4 +1,5 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Chip, Typography } from '@mui/material'
+import dayjs from 'dayjs'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -20,7 +21,7 @@ const PopularSecondaryCard = ({dest, image, title, date}) => {
        flexDirection: 'column',
        justifyContent: 'space-between',
       }}>
-        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, fontSize: '1.25rem', paddingTop: "10px",}}>
+        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, color: '#004db3', fontFamily:'Vollkorn', fontSize: '1.25rem', paddingTop: "10px",}}>
           {title}
         </Typography>
         <Typography gutterBottom sx={{
@@ -30,9 +31,8 @@ const PopularSecondaryCard = ({dest, image, title, date}) => {
             color:'#8e8e8e',
             overflow: 'hidden',
             overflowWrap: 'anywhere'
-           }}>{
-            date
-           }
+           }}>
+            {dayjs(date).format('YYYY-MM-DD')}
            </Typography>
       </CardContent>
     </CardActionArea>

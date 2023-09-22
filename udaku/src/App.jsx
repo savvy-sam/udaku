@@ -27,9 +27,9 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        cacheTime: 1000 * 60 * 60 * 24,
+        cacheTime: 1000*60*30,
         refetchOnWindowFocus: false, 
-        staleTime: 30 * 60 * 1000, 
+        staleTime: 1000*60*30, 
       },
     },
   });

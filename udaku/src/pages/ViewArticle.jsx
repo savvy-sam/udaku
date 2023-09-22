@@ -9,7 +9,7 @@ import BlockContent from '@sanity/block-content-to-react'
 const ViewArticle = () => {
 
   const {id}= useParams();
-
+ 
   const builder = imageUrlBuilder(client);
 
   function urlFor(source) {
@@ -49,7 +49,7 @@ const ViewArticle = () => {
           <header>
         <Box>
           <Typography variant='h3' sx={{
-            padding: '20px'
+            padding: '20px', fontFamily: 'Vollkorn'
           }}>{data[0]?.title}</Typography>
         </Box>
         <Box sx={{

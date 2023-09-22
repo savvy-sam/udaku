@@ -1,7 +1,6 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Chip, Typography } from '@mui/material'
+import dayjs from 'dayjs'
 import React from 'react'
-import Image1 from '../assets/images/image_1.jpeg'
-import Image2 from '../assets/images/homePhoto.jpg'
 import { Link } from 'react-router-dom'
 
 const SecondaryCard = ({image, title, dest, date, alt}) => {
@@ -25,19 +24,20 @@ const SecondaryCard = ({image, title, dest, date, alt}) => {
           backgroundColor: 'red',
           color: 'white',
         }} />
-        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, fontSize: '1.25rem', paddingTop: "10px", paddingX: "7px"}}>
+        <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, color: '#004db3', fontFamily: 'Vollkorn', fontSize: '1.25rem', paddingTop: "10px", paddingX: "7px"}}>
           {title}
         </Typography>
         <Typography sx={{
-            fontSize: '12px',
+            fontSize: '14px',
             position: 'absolute',
             bottom: '15px',
-            paddingX: '7px',
+            paddingX: {xs: '2px', md: '7px'},
             fontFamily: `'Noto Sans Jp, sans-serif'`,
-            fontWeight: 400,
+            fontWeight: 600,
             overflow: 'hidden',
+            color: '#795548',
             overflowWrap: 'anywhere'
-           }}>{date}
+           }}>{dayjs(date).format('YYYY-MM-DD')}
            </Typography>
       </CardContent>
     </CardActionArea>

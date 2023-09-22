@@ -141,7 +141,7 @@ const Navbar = ({mode,setMode}) => {
           {pages.map((item, index)=>(
               <Link style={{
                 textDecoration: 'none',
-                fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`,
+                fontFamily: 'Noto Sans JP',
                 fontWeight: 600,
                 fontSize: '14px',
                 color: '#FFFFFF',

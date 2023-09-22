@@ -1,4 +1,5 @@
 import { Box, Chip, Typography } from '@mui/material'
+import dayjs from 'dayjs'
 import React from 'react'
 
 const FeaturedCard = ({ image, title, alt, date }) => {
@@ -19,11 +20,11 @@ const FeaturedCard = ({ image, title, alt, date }) => {
            alt={alt}/>
            <Box sx={{
             display: 'flex',
-            width: '50%',
+            width: '70%',
             flexDirection: 'column',
             gap:'15px',
             position: 'absolute',
-            bottom: '25%',
+            top: '25%',
             paddingX: '15px',
             textAlign: 'start',
            }}>
@@ -36,11 +37,12 @@ const FeaturedCard = ({ image, title, alt, date }) => {
             bgcolor: '#212121',
             py: 2,
             px: 1,
+            width: 'fit-content',
             borderRadius: '20px',
            }}>
            <Typography variant='h3' sx={{
             fontSize: '1.75rem',
-            fontFamily: `'Noto Sans JP, sans-serif'`,
+            fontFamily: 'Ubuntu',
             fontWeight: 900,
             color:'#ffffff',
             textShadow: '1px 1px 2px pink',
@@ -54,7 +56,7 @@ const FeaturedCard = ({ image, title, alt, date }) => {
             fontWeight: 400,
             overflow: 'hidden',
             overflowWrap: 'anywhere'
-           }}>{date}</Typography>
+           }}>{dayjs(date).format('YYYY-MM-DD')}</Typography>
            </Box>
     </Box>
   )

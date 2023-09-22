@@ -1,4 +1,5 @@
 import { Box, Card, CardActionArea,CardContent, CardMedia, Chip, Typography } from '@mui/material'
+import dayjs from 'dayjs'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -40,13 +41,13 @@ const SideCard2 = ({dest, summary, date, title, image}) => {
                 width: '100px',
                 marginBottom: '7px',
             }} />
-            <h3  variant="h3" sx={{fontWeight: 500, fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
+            <h3  variant="h3" sx={{fontWeight: 500, color: "#004db3", fontSize: 16, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
               {title}
             </h3>
             <Typography gutterBottom variant="body" component="div" sx={{fontWeight: 500, fontSize: 14, fontFamily: `"Noto Sans JP", "Roboto", "sans-serif"`}}>
               {summary}
             </Typography>
-            <Typography paddingY={3}>{date}</Typography>
+            <Typography paddingY={3}>{dayjs(date).format('YYYY-MM-DD')}</Typography>
       </Box>
       </CardContent>
     </CardActionArea>
