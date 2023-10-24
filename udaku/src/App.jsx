@@ -17,7 +17,7 @@ import { ThemeProvider } from '@mui/material'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Politics from './pages/Politics';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar';
 
 
 function App() {
@@ -90,6 +90,10 @@ function App() {
         {
           path: "/post/:id",
           element: <ViewArticle />,
+        },
+        {
+          path: "*",
+          element: <Home />,
         },
       ],
     },

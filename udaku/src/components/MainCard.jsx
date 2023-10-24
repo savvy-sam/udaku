@@ -8,6 +8,8 @@ const MainCard = ({title, dest, image, summary, date, alt}) => {
     <Link to={dest} style={{textDecoration: 'none'}}>
     <Card sx={{maxWidth: 700,
       height: 400,
+      paddingBottom: '10px',
+      overflowY: 'clip'
     }}>
     <CardActionArea sx={{
       height: '100%',
@@ -21,15 +23,19 @@ const MainCard = ({title, dest, image, summary, date, alt}) => {
         alt={alt}
       />
       <CardContent sx={{
-        height: '220px'
+        height: '220px',
+        paddingBottom: '10px',
+        overflowY: 'clip'
       }}>
         <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 800, color: '#004db3', fontFamily: 'Vollkorn', paddingX: '7px', paddingBottom: '7px'}}>
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{paddingX: '7px', fontWeight: 600, fontSize: '17', fontFamily: 'Ubuntu', lineHeight: 1.7}}>
-        {summary}
-        </Typography>
-        <Typography sx={{
+        <div>
+          <Typography variant="body2" color="text.secondary" sx={{paddingX: '7px', overflow: 'clip', fontWeight: 600, fontSize: '17', fontFamily: 'Ubuntu', lineHeight: 1.7}}>
+          {summary}
+          </Typography>
+        </div>
+        {/* <Typography sx={{
             fontSize: '12px',
             paddingX: '7px',
             paddingTop: '15px',
@@ -41,7 +47,7 @@ const MainCard = ({title, dest, image, summary, date, alt}) => {
             bottom: '15px',
             overflowWrap: 'anywhere'
            }}>{dayjs(date).format('YYYY-MM-DD')}
-           </Typography>
+           </Typography> */}
       </CardContent>
     </CardActionArea>
   </Card>
