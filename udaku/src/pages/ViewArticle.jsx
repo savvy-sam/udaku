@@ -61,13 +61,19 @@ const ViewArticle = () => {
           }}>{data[0]?.title}</Typography>
         </Box>
         <Box sx={{
-          padding: '10px'
+          padding: '10px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: "center",
+          mixBlendMode: 'darken'
         }}>
         <Box
             component="img"
             sx={{
+              width: {xs: '100%', md: '80%'},
+              objectFit: 'cover',
               maxHeight: { xs: 400, lg: 400 },
-              maxWidth: { xs: 300, lg: 500 },
+              maxWidth: { xs: 300, lg: 700 },
             }}
             alt={data[0]?.title}
             src={data[0]?.mainImage.asset.url}
