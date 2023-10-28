@@ -12,8 +12,22 @@ import PopularHome from './PopularHome'
 
 const Home = () => {
 
+  // const trendingQuery = `
+  // *[_type=="post"][0...5]{
+  //   title,
+  //   slug,
+  //   publishedAt,
+  //   mainImage{
+  //     asset->{
+  //       _id,
+  //       url
+  //     },
+  //     alt
+  //   },
+  // } | order(publishedAt desc)`;
+
   const trendingQuery = `
-  *[_type=="post"]{
+  *[_type=="post" && 'trending' in tags] | order(publishedAt asc) [0...5] {
     title,
     slug,
     publishedAt,
@@ -23,10 +37,25 @@ const Home = () => {
         url
       },
       alt
-    },
-  } | order(publishedAt desc)`;
+    }
+  }`;
 
-  const latestQuery = `*[_type=="post"]{
+
+  // const latestQuery = `*[_type=="post"]{
+  //   title,
+  //   slug,
+  //   summary,
+  //   publishedAt,
+  //   mainImage{
+  //     asset->{
+  //       _id,
+  //       url
+  //     },
+  //     alt
+  //   },
+  // } | order(publishedAt desc)`;
+
+  const latestQuery = `*[_type=="post"] | order(publishedAt desc) [0...4] {
     title,
     slug,
     summary,
@@ -37,9 +66,9 @@ const Home = () => {
         url
       },
       alt
-    },
-  } | order(publishedAt desc)`;
-  
+    }
+  }`;
+
 
   const {data: firstData, isLoading: firstIsLoading, isError: firstIsError} =useQuery('trendingPosts',()=>client.fetch(trendingQuery));
   const {data: secondData, isLoading: secondIsLoading, isError: SecondIsError} =useQuery('latestPosts',()=>client.fetch(latestQuery));

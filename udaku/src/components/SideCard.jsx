@@ -1,6 +1,5 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
-import Image1 from '../assets/images/image_1.jpeg'
 import { Link } from 'react-router-dom'
 
 const SideCard = ({dest, title, img}) => {
