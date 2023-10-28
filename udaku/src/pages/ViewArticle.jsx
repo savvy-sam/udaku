@@ -41,6 +41,14 @@ const ViewArticle = () => {
 
   if(isError) return(<div>error...</div>)
 
+  if(!isLoading && data.length<1) {
+    return (
+      <div>
+        <p> Page Not Found</p>
+      </div>
+    )
+  }
+
   return (
     <Layout>
       <>
@@ -53,27 +61,33 @@ const ViewArticle = () => {
           }}>{data[0]?.title}</Typography>
         </Box>
         <Box sx={{
-          padding: '10px'
+          padding: '10px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: "center",
+          mixBlendMode: 'darken'
         }}>
         <Box
             component="img"
             sx={{
+              width: {xs: '100%', md: '80%'},
+              objectFit: 'cover',
               maxHeight: { xs: 400, lg: 400 },
-              maxWidth: { xs: 300, lg: 500 },
+              maxWidth: { xs: 300, lg: 700 },
             }}
-            alt={data[0].title}
-            src={data[0].mainImage.asset.url}
+            alt={data[0]?.title}
+            src={data[0]?.mainImage.asset.url}
           />
         </Box>
         <Box sx={{paddingY: 1, paddingX: '10px', display: 'flex', justifyContent: 'start', flexDirection: 'row', gap: 2 }}>
-            <img style={{height: 30, width: 30, borderRadius: '9999px'}} src={urlFor(data[0].authorImage).url()} alt={data[0].title} />
-            <Typography variant='body' sx={{fontSize: '1.154rem', fontWeight: 500, fontFamily: 'cursive'}} >{data[0].name}</Typography>
+            <img style={{height: 30, width: 30, borderRadius: '9999px'}} src={urlFor(data[0].authorImage).url()} alt={data[0]?.title} />
+            <Typography variant='body' sx={{fontSize: '1.154rem', fontWeight: 500, fontFamily: 'cursive'}} >{data[0]?.name}</Typography>
         </Box>
         </header>
         <Box sx={{
           padding: '10px',
         }}>
-            < BlockContent blocks={data[0].body} projectId={'msx9w6j2'} dataset={'production'}/>
+            < BlockContent blocks={data[0]?.body} projectId={'msx9w6j2'} dataset={'production'}/>
         </Box>
         </article>
       </Box>

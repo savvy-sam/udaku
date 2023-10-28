@@ -102,10 +102,11 @@ const Home = () => {
                 infiniteLoop
                 stopOnHover
                 showStatus={false}
-                showIndicators
-                showArrows
+                showIndicators={false}
+                showArrows={false}
                 autoFocus
                 showThumbs={false}
+                swipeable={false}
                 useKeyboardArrows
                 autoPlay>
 
@@ -154,7 +155,7 @@ const Home = () => {
                         dest={'/post/'+ post.slug.current}
                         image={post.mainImage.asset.url}
                         title={post.title}
-                        summary={post.summary}
+                        summary={post?.summary?.substring(0,60)+" ..."}
                         alt={post.alt}
                         date={post.publishedAt}/>
                 </Grid>
