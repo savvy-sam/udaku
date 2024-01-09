@@ -57,7 +57,12 @@ const ViewArticle = () => {
           <header>
         <Box>
           <Typography variant='h3' sx={{
-            padding: '20px', fontFamily: 'Vollkorn'
+            padding: '20px', fontFamily: 'Vollkorn', 
+            fontSize: {
+              sm: '12px',
+              md: '14px',
+              lg: '24px',
+            },
           }}>{data[0]?.title}</Typography>
         </Box>
         <Box sx={{
