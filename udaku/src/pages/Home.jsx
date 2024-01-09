@@ -80,7 +80,9 @@ const Home = () => {
                 showThumbs={false}
                 swipeable={false}
                 useKeyboardArrows
-                autoPlay>
+                interval={6000}
+                autoPlay
+                >
 
                   {
                     firstData?.map((item, index)=>(
