@@ -4,7 +4,6 @@ import { Box, Stack, Typography } from '@mui/material'
 import PopularSecondaryCard from '../components/PopularSecondaryCard'
 import { useQuery } from 'react-query'
 import { client } from '../client'
-import { useLocation } from 'react-router-dom'
 
 const Popular = ({id}) => {
   
@@ -33,7 +32,7 @@ const Popular = ({id}) => {
       return(<div>error...</div>)
     }
 
-   const randomNumber = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+   const randomNumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
 
    const firstElement = data[randomNumber];
 

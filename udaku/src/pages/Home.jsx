@@ -12,20 +12,7 @@ import PopularHome from './PopularHome'
 
 const Home = () => {
 
-  // const trendingQuery = `
-  // *[_type=="post"][0...5]{
-  //   title,
-  //   slug,
-  //   publishedAt,
-  //   mainImage{
-  //     asset->{
-  //       _id,
-  //       url
-  //     },
-  //     alt
-  //   },
-  // } | order(publishedAt desc)`;
-
+ 
   const trendingQuery = `
   *[_type=="post" && 'trending' in tags] | order(publishedAt asc) [0...5] {
     title,
@@ -39,21 +26,6 @@ const Home = () => {
       alt
     }
   }`;
-
-
-  // const latestQuery = `*[_type=="post"]{
-  //   title,
-  //   slug,
-  //   summary,
-  //   publishedAt,
-  //   mainImage{
-  //     asset->{
-  //       _id,
-  //       url
-  //     },
-  //     alt
-  //   },
-  // } | order(publishedAt desc)`;
 
   const latestQuery = `*[_type=="post"] | order(publishedAt desc) [0...4] {
     title,

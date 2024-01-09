@@ -56,7 +56,7 @@ const FeaturedCard = ({ image, title, alt, date }) => {
             fontWeight: 400,
             overflow: 'hidden',
             overflowWrap: 'anywhere'
-           }}>{dayjs(date).format('YYYY-MM-DD')}</Typography>
+           }}>{""}</Typography>
            </Box>
     </Box>
   )
