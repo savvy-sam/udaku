@@ -5,6 +5,8 @@ import { useQuery } from 'react-query'
 import { client } from '../client'
 import imageUrlBuilder from '@sanity/image-url'
 import BlockContent from '@sanity/block-content-to-react'
+import {PortableText} from '@portabletext/react'
+import { SampleImageComponent } from '../components/SampleImageComponent'
 
 const ViewArticle = () => {
 
@@ -40,6 +42,8 @@ const ViewArticle = () => {
   if(isLoading) return(<div>loading...</div>)
 
   if(isError) return(<div>error...</div>)
+
+  console.log(data[0].body)
 
   if(!isLoading && data.length<1) {
     return (
@@ -92,7 +96,15 @@ const ViewArticle = () => {
         <Box sx={{
           padding: '10px',
         }}>
-            < BlockContent blocks={data[0]?.body} projectId={'msx9w6j2'} dataset={'production'}/>
+            {/* < BlockContent blocks={data[0]?.body} projectId={'msx9w6j2'} dataset={'production'}/> */}
+            <PortableText
+            value={data[0]?.body}
+            components={{
+              types: {
+                image: SampleImageComponent,
+              },
+            }}
+          />
         </Box>
         </article>
       </Box>
