@@ -6,7 +6,7 @@ export const SampleImageComponent = ({value}) => {
   const {width, height} = getImageDimensions(value);
   return (
     <img
-      src={urlBuilder(client).image(value).width(800).fit('max').auto('format').url()}
+      src={urlBuilder(client).image(value).width(400).fit('max').auto('format').url()}
       alt={value.alt || ' '}
       loading="lazy"
       style={{
